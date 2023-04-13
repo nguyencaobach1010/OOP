@@ -1,19 +1,39 @@
 package QuanLyNhanSu;
 
-public class Manager extends Employee{
-    private int numberOfSubordinates;
+import java.util.ArrayList;
 
-    public Manager(String id, String name, String phoneNumber, double daysOfWork, double dailySalary, Employee supervisor, int numberOfSubordinates) {
-        super(id, name, phoneNumber, daysOfWork, dailySalary, supervisor);
-        this.numberOfSubordinates = numberOfSubordinates;
+public class Manager extends HumanResources{
+    private int Subordinates;
+
+    public Manager() {
     }
 
-    public void addSubordinate() {
-        numberOfSubordinates++;
+    public Manager(String id, String name, String phoneNumber, double dayOfWorks, double dailySalary, int subordinates) {
+        super(id, name, phoneNumber, dayOfWorks, dailySalary);
+        Subordinates = subordinates;
+    }
+
+    public int getSubordinates() {
+        return Subordinates;
+    }
+
+    public void setSubordinates(int subordinates) {
+        Subordinates = subordinates;
     }
 
     @Override
-    public double calculateSalary() {
-        return calculateSalary() * 200 * numberOfSubordinates;
+    public double monthlySalary() {
+        return monthlySalary() * 200 * Subordinates;
     }
+
+    @Override
+    public void addInfo() {
+        super.addInfo();
+    }
+
+    public void increaseSubordinates() {
+        Subordinates++;
+        monthlySalary();
+    }
+
 }

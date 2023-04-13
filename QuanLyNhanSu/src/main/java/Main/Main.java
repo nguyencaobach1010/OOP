@@ -1,7 +1,6 @@
 package Main;
 
 import QuanLyNhanSu.Company;
-import QuanLyNhanSu.Manager;
 
 import java.util.Scanner;
 
@@ -35,15 +34,8 @@ public class Main {
             switch (Choice) {
                 case 1:
                     System.out.println("=============Nhập thông tin công ty ============");
-                    System.out.println("Tên Công Ty: ");
-                    String nameCompany = scanner.nextLine();
-                    System.out.println("Mã Số Thuế: ");
-                    String codeTax = scanner.nextLine();
-                    System.out.println("Doanh Thu Tháng: ");
-                    String monthRevenue = scanner.nextLine();
-                    company.setCompanyName(nameCompany);
-                    company.setTaxCode(codeTax);
-                    company.setMonthlyRevenue(monthRevenue);
+                    company.addInfoCompany();
+                    company.addInfoEmployee();
                     break;
                 case 2:
                     System.out.println("=============Phân bổ Nhân viên vào Trưởng phòng============");
@@ -98,4 +90,5 @@ public class Main {
             }
         } while (Choice != 0);
     }
+
 }
