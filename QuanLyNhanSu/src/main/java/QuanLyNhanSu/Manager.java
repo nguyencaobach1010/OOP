@@ -1,11 +1,10 @@
 package QuanLyNhanSu;
 
-import java.util.ArrayList;
-
-public class Manager extends HumanResources{
-    private int Subordinates;
+public class Manager extends Employee{
+    private int Subordinates = 0;
 
     public Manager() {
+
     }
 
     public Manager(String id, String name, String phoneNumber, double dayOfWorks, double dailySalary, int subordinates) {
@@ -23,17 +22,12 @@ public class Manager extends HumanResources{
 
     @Override
     public double monthlySalary() {
-        return monthlySalary() * 200 * Subordinates;
+        return monthlySalary() * 200 + 100 * Subordinates;
     }
 
     @Override
-    public void addInfo() {
-        super.addInfo();
+    public String toString() {
+        return String.format("%-15s%-25s%-25s%-20s%.2f%20s",
+                getId(), getName(), getPhoneNumber(), getDayOfWorks(), getDailySalary(), monthlySalary(),Subordinates);
     }
-
-    public void increaseSubordinates() {
-        Subordinates++;
-        monthlySalary();
-    }
-
 }

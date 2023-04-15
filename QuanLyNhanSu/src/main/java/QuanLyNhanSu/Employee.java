@@ -1,18 +1,72 @@
 package QuanLyNhanSu;
 
-import static Main.Main.scanner;
-
-public class Employee extends HumanResources{
+public class Employee {
+    private String id;
+    private String name;
+    private String phoneNumber;
+    private double dayOfWorks;
+    private double dailySalary;
     private Manager manager;
 
     public Employee() {
     }
+
+    public Employee(String id, String name, String phoneNumber, double dayOfWorks, double dailySalary) {
+        this.id = id;
+        this.name = name;
+        this.phoneNumber = phoneNumber;
+        this.dayOfWorks = dayOfWorks;
+        this.dailySalary = dailySalary;
+    }
+
     public Employee(String id, String name, String phoneNumber, double dayOfWorks, double dailySalary, Manager manager) {
-        super(id, name, phoneNumber, dayOfWorks, dailySalary);
+        this.id = id;
+        this.name = name;
+        this.phoneNumber = phoneNumber;
+        this.dayOfWorks = dayOfWorks;
+        this.dailySalary = dailySalary;
         this.manager = manager;
     }
 
+    public String getId() {
+        return id;
+    }
 
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public double getDayOfWorks() {
+        return dayOfWorks;
+    }
+
+    public void setDayOfWorks(double dayOfWorks) {
+        this.dayOfWorks = dayOfWorks;
+    }
+
+    public double getDailySalary() {
+        return dailySalary;
+    }
+
+    public void setDailySalary(double dailySalary) {
+        this.dailySalary = dailySalary;
+    }
 
     public Manager getManager() {
         return manager;
@@ -22,13 +76,12 @@ public class Employee extends HumanResources{
         this.manager = manager;
     }
 
-    @Override
     public double monthlySalary() {
-        return monthlySalary() * 100;
+        return dayOfWorks * dailySalary ;
     }
 
-    @Override
-    public void addInfo() {
-        super.addInfo();
+    public String toString() {
+        return String.format("%-15s%-25s%-20s%-20s%.2f%20s",
+                id, name, phoneNumber, dayOfWorks, dailySalary,monthlySalary());
     }
 }

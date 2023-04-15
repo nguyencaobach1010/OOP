@@ -7,6 +7,7 @@ import java.util.Scanner;
 public class Main {
     public static int Choice;
     public static Scanner scanner;
+
     public static void main(String[] args) {
         scanner = new Scanner(System.in);
         Company company = new Company();
@@ -26,6 +27,8 @@ public class Main {
             System.out.println("|   09. Sắp xếp nhân viên toàn công ty theo thứ tự lương giảm dần.                               |");
             System.out.println("|   10. Tìm Giám Đốc có số lượng cổ phần nhiều nhất.                                             |");
             System.out.println("|   11. Tính và Xuất tổng THU NHẬP của từng Giám Đốc                                             |");
+            System.out.println("|   12. Thêm dữ liệu nhân viên giả                                                               |");
+            System.out.println("|   13. Thêm dữ liệu công ty giả                                                                 |");
             System.out.println("|   00. Thoát                                                                                    |");
             System.out.println("==================================================================================================");
             System.out.print("Chức năng số: ");
@@ -33,58 +36,60 @@ public class Main {
             scanner.nextLine();
             switch (Choice) {
                 case 1:
-                    System.out.println("=============Nhập thông tin công ty ============");
+                    System.out.println("Nhập thông tin công ty");
                     company.addInfoCompany();
-                    company.addInfoEmployee();
                     break;
                 case 2:
-                    System.out.println("=============Phân bổ Nhân viên vào Trưởng phòng============");
-                    System.out.println("Nhập mã số nhân viên");
-                    String employeeCode = scanner.nextLine();
-//                    Manager manager = company.findManagerById(employeeCode);
-//                    Employee nhanVien = Company.timNhanVienTheoMaSo(employeeCode);
-//                    if (nhanVien == null) {
-//                        System.out.println("Không tìm thấy nhân viên có mã số là " + employeeCode);
-//                    } else if (!(nhanVien instanceof Staff)) {
-//                        System.out.println("Nhân viên này không phải là Nhân viên thường!");
+                    System.out.println("Phân bổ Nhân viên vào Trưởng phòng");
+                    company.setEmployeeIntoManager();
                     break;
                 case 3:
-                    System.out.println("=============Thêm, xóa thông tin một nhân sự================");
+                    System.out.println("Thêm, xóa thông tin một nhân sự");
+                    company.addOrDeleteEmployee();
                     break;
                 case 4:
-                    System.out.println("=============Xuất ra thông tin toàn bộ người trong công ty================");
+                    System.out.println("Xuất ra thông tin toàn bộ người trong công ty");
+//                    company.displayInfoOfEmployee();
+                    company.printEmployee();
                     break;
                 case 5:
-                    System.out.println("=============Tính và xuất tổng lương cho toàn công ty================");
-
+                    System.out.println("Tính và xuất tổng lương cho toàn công ty");
+                    company.totalIncomeCompany();
                     break;
                 case 6:
-                    System.out.println("=============Tìm Nhân viên thường có lương cao nhất================");
-
-
+                    System.out.println("Tìm Nhân viên thường có lương cao nhất");
+                    company.highestSalaryOfEmployee();
                     break;
                 case 7:
-                    System.out.println("=============Tìm Trưởng Phòng có số lượng nhân viên dưới quyền nhiều nhất================");
-
+                    System.out.println("Tìm Trưởng Phòng có số lượng nhân viên dưới quyền nhiều nhất");
+                    company.numberOfManagerHaveMostSubordinates();
                     break;
                 case 8:
-                    System.out.println("===============Sắp xếp nhân viên toàn công ty theo thứ tự abc===============");
-
+                    System.out.println("Sắp xếp nhân viên toàn công ty theo thứ tự abc");
+                    company.arrangeEmployeeName();
                     break;
                 case 9:
-                    System.out.println("===============Sắp xếp nhân viên toàn công ty theo thứ tự lương giảm dần===============");
-
+                    System.out.println("Sắp xếp nhân viên toàn công ty theo thứ tự lương giảm dần");
+                    company.arrangeDecreseIncome();
                     break;
                 case 10:
-                    System.out.println("===============Tìm Giám Đốc có số lượng cổ phần nhiều nhất===============");
-
+                    System.out.println("Tìm Giám Đốc có số lượng cổ phần nhiều nhất");
+                    company.directorHighestShare();
                     break;
                 case 11:
-                    System.out.println("===============Tính và Xuất tổng THU NHẬP của từng Giám Đốc===============");
-
+                    System.out.println("Tính và Xuất tổng THU NHẬP của từng Giám Đốc");
+                    company.totalIncomeOfEachDirector();
+                    break;
+                case 12:
+                    System.out.println("Thêm dữ liệu nhân viên");
+                    company.inputDataEmployee();
+                    break;
+                case 13:
+                    System.out.println("Thêm dữ liệu công ty");
+//                    company.inputDataCompany();
                     break;
                 case 0:
-                    System.out.println("======================Tạm biệt!======================");
+                    System.out.println("Tạm biệt!!!");
                     System.exit(0);
                     break;
             }

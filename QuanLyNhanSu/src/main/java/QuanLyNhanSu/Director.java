@@ -1,16 +1,16 @@
 package QuanLyNhanSu;
 
-import static Main.Main.scanner;
-
-public class Director extends HumanResources{
+public class Director extends Employee{
     private double share;
+    private double income;
 
     public Director() {
     }
 
-    public Director(String id, String name, String phoneNumber, double dayOfWorks, double dailySalary, double share) {
+    public Director(String id, String name, String phoneNumber, double dayOfWorks, double dailySalary, double share, double income) {
         super(id, name, phoneNumber, dayOfWorks, dailySalary);
         this.share = share;
+        this.income = income;
     }
 
     public double getShare() {
@@ -21,15 +21,22 @@ public class Director extends HumanResources{
         this.share = share;
     }
 
-    @Override
-    public void addInfo() {
-        super.addInfo();
-        System.out.print("Số cổ phần: ");
-        double share = scanner.nextInt();
+    public double getIncome() {
+        return income;
+    }
+
+    public void setIncome(double income) {
+        this.income = income;
     }
 
     @Override
     public double monthlySalary() {
         return monthlySalary() * 300;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%-15s%-25s%-25s%-20s%.2f%20s-20s%.2f%20s",
+                getId(), getName(), getPhoneNumber(), getDayOfWorks(), getDailySalary(), monthlySalary(),share,income);
     }
 }
