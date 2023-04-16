@@ -51,6 +51,7 @@ public class Main {
                     System.out.println("Xuất ra thông tin toàn bộ người trong công ty");
 //                    company.displayInfoOfEmployee();
                     company.printEmployee();
+                    company.printManager();
                     break;
                 case 5:
                     System.out.println("Tính và xuất tổng lương cho toàn công ty");
@@ -69,7 +70,7 @@ public class Main {
                     company.arrangeEmployeeName();
                     break;
                 case 9:
-                    System.out.println("Sắp xếp nhân viên toàn công ty theo thứ tự lương giảm dần");
+                    System.out.println("Sắp xếp nhân viên công ty theo thứ tự lương giảm dần");
                     company.arrangeDecreseIncome();
                     break;
                 case 10:
@@ -83,10 +84,6 @@ public class Main {
                 case 12:
                     System.out.println("Thêm dữ liệu nhân viên");
                     company.inputDataEmployee();
-                    break;
-                case 13:
-                    System.out.println("Thêm dữ liệu công ty");
-//                    company.inputDataCompany();
                     break;
                 case 0:
                     System.out.println("Tạm biệt!!!");

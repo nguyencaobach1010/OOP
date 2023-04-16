@@ -11,11 +11,14 @@ public class Company {
     private double monthlyRevenue;
     private double profit;
     private ArrayList<Employee> listOfStaff = new ArrayList<>();
-    private ArrayList<Company> listOfCompany= new ArrayList<>();
+    private ArrayList<Manager> listOfManager = new ArrayList<>();
+    private ArrayList<Director> listOfDirector = new ArrayList<>();
     private Company company;
     private Employee employe;
+    private Manager manager;
+    private Director director;
+    private final Scanner scanner = new Scanner(System.in);
 
-    private Scanner scanner = new Scanner(System.in);
     public Company() {
 
     }
@@ -74,17 +77,58 @@ public class Company {
         this.listOfStaff = listOfStaff;
     }
 
-    //    public void inputDataCompany(){
-//        addDataCompany(new Company("Bún Bò Huế","MST999999",1500000000));
-//    }
-//    public void addDataCompany(Company company) {
-//        listOfCompany.add(company);
-//    }
+    public ArrayList<Manager> getListOfManager() {
+        return listOfManager;
+    }
+
+    public void setListOfManager(ArrayList<Manager> listOfManager) {
+        this.listOfManager = listOfManager;
+    }
+
+    public ArrayList<Director> getListOfDirector() {
+        return listOfDirector;
+    }
+
+    public void setListOfDirector(ArrayList<Director> listOfDirector) {
+        this.listOfDirector = listOfDirector;
+    }
+
+    public Company getCompany() {
+        return company;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
+    }
+
+    public Employee getEmploye() {
+        return employe;
+    }
+
+    public void setEmploye(Employee employe) {
+        this.employe = employe;
+    }
+
+    public Manager getManager() {
+        return manager;
+    }
+
+    public void setManager(Manager manager) {
+        this.manager = manager;
+    }
+
+    public Director getDirector() {
+        return director;
+    }
+
+    public void setDirector(Director director) {
+        this.director = director;
+    }
 
     /**
      * Hàm thêm dữ liệu cho đỡ phải nhập :D :D
      */
-    public void inputDataEmployee(){
+    public void inputDataEmployee() {
         addDataEmployee(new Employee("NV1", "Phạm Thị Hoài Thương", "033 619 0109", 22, 100));
         addDataEmployee(new Employee("NV2", "Trần Minh Nhật", "032 653 0588", 20, 100));
         addDataEmployee(new Employee("NV3", "Đỗ Thị Diễm My", "033 579 0239", 15, 100));
@@ -97,9 +141,11 @@ public class Company {
         addDataEmployee(new Employee("NV9", "Nguyễn Văn A", "097 780 2070", 22, 100));
 
     }
+
     public void addDataEmployee(Employee employee) {
         listOfStaff.add(employee);
     }
+
     public void addInfoCompany() {
         System.out.println("Nhập tên công ty: ");
         String tenCongTy = scanner.nextLine();
@@ -113,7 +159,8 @@ public class Company {
         System.out.println(company.toString());
         printFooterCompany();
     }
-    public void addStaff(){
+
+    public void addStaff() {
         employe = new Employee();
         System.out.println("Mã Nhân Viên: ");
         employe.setId(scanner.nextLine());
@@ -123,32 +170,41 @@ public class Company {
         employe.setPhoneNumber(scanner.nextLine());
         System.out.println("Số Ngày Làm Việc: ");
         employe.setDayOfWorks(scanner.nextInt());
-        listOfStaff.add(employe);
-    }
-    public void addManager(){
-        employe = new Manager();
-        System.out.println("Mã Trưởng Phòng: ");
-        employe.setId(scanner.nextLine());
-        System.out.println("Tên Trưởng Phòng: ");
-        employe.setName(scanner.nextLine());
-        System.out.println("Số Điện Thoại: ");
-        employe.setPhoneNumber(scanner.nextLine());
-        System.out.println("Số Ngày Làm Việc: ");
-        employe.setDayOfWorks(scanner.nextInt());
+        System.out.println("Lương Ngày: ");
+        employe.setDailySalary(scanner.nextDouble());
+        employe.monthlySalary();
         listOfStaff.add(employe);
     }
 
-    public void addDirector(){
-        employe = new Director();
-        System.out.println("Mã Giám Đốc: ");
-        employe.setId(scanner.nextLine());
-        System.out.println("Tên Giám Đốc: ");
-        employe.setName(scanner.nextLine());
+    public void addManager() {
+        manager = new Manager();
+        System.out.println("Mã Trưởng Phòng: ");
+        manager.setId(scanner.nextLine());
+        System.out.println("Tên Trưởng Phòng: ");
+        manager.setName(scanner.nextLine());
         System.out.println("Số Điện Thoại: ");
-        employe.setPhoneNumber(scanner.nextLine());
+        manager.setPhoneNumber(scanner.nextLine());
         System.out.println("Số Ngày Làm Việc: ");
-        employe.setDayOfWorks(scanner.nextInt());
-        listOfStaff.add(employe);
+        manager.setDayOfWorks(scanner.nextInt());
+        System.out.println("Lương Ngày: ");
+        manager.setDailySalary(scanner.nextDouble());
+        employe.monthlySalary();
+        listOfManager.add(manager);
+    }
+
+    public void addDirector() {
+        director = new Director();
+        System.out.println("Mã Giám Đốc: ");
+        director.setId(scanner.nextLine());
+        System.out.println("Tên Giám Đốc: ");
+        director.setName(scanner.nextLine());
+        System.out.println("Số Điện Thoại: ");
+        director.setPhoneNumber(scanner.nextLine());
+        System.out.println("Số Ngày Làm Việc: ");
+        director.setDayOfWorks(scanner.nextInt());
+        System.out.println("Lương Ngày: ");
+        director.setDailySalary(scanner.nextDouble());
+        listOfDirector.add(director);
     }
 
     /**
@@ -156,7 +212,7 @@ public class Company {
      */
     public void addInfoEmployee() {
         System.out.print("Nhập số lượng nhân viên: ");
-        int numberOfEmployee  = scanner.nextInt();
+        int numberOfEmployee = scanner.nextInt();
         for (int i = 0; i < numberOfEmployee; i++) {
             System.out.println("Nhập thông tin nhân viên " + (i + 1) + ":");
             System.out.println("Loại nhân viên: ");
@@ -182,7 +238,6 @@ public class Company {
                     break;
             }
         }
-        System.out.println("Success !!!");
     }
 
     /**
@@ -191,36 +246,36 @@ public class Company {
     public Employee findEmployeeById(String employeeId) {
         for (Employee employee : company.getListOfStaff()) {
             if (employee instanceof Employee)
-                if (employee.getId().toLowerCase().equals(employeeId.toLowerCase()))
+                if (employee.getId().equalsIgnoreCase(employeeId))
                     return employee;
         }
         return null;
     }
+
     /**
      * Hàm tìm quản lý theo Id
      */
-    public Employee findManagerById(String managerId) {
-        for (Employee employee : company.getListOfStaff()) {
-            if (employee instanceof Manager)
-                if (employee.getId().toLowerCase().equals(managerId.toLowerCase()))
-                    return employee;
+    public Manager findManagerById(String managerId) {
+        for (Manager manager : company.getListOfManager()) {
+            if (manager instanceof Manager)
+                if (manager.getId().equalsIgnoreCase(managerId))
+                    return manager;
         }
         return null;
     }
+
     /**
      * Hàm chỉ định nhân viên vào quản lý
      */
     public void setEmployeeIntoManager() {
-        if (company == null) {
-            System.out.println("Chưa có thông tin công ty. ");
-            return;
-        }
+        checkInfoCompany();
         while (true) {
             printEmployee();
             System.out.println("Nhập mã Nhân Viên để thêm chức Trưởng Phòng: ");
+            System.out.println("Nhập 0 thể thoát: ");
             String employeeId;
             employeeId = scanner.nextLine();
-            if (employeeId.toLowerCase().equals("0"))
+            if (employeeId.equalsIgnoreCase("0"))
                 break;
             Employee employe = findEmployeeById(employeeId);
             if (employe == null) {
@@ -230,8 +285,8 @@ public class Company {
             System.out.println("Nhập mã số Trưởng Phòng: ");
             String managerId;
             managerId = scanner.nextLine();
-            if (managerId.toLowerCase().equals("0")) {
-                ((Employee) employe).setManager(null);
+            if (managerId.equalsIgnoreCase("0")) {
+                employe.setManager(null);
                 System.out.println("Xóa nhân viên khỏi bộ phận.");
             } else {
                 Employee employeeSetToManager = findManagerById(managerId);
@@ -239,12 +294,13 @@ public class Company {
                     System.out.println("Không tìm thấy trưởng phòng này.");
                     continue;
                 }
-                ((Employee) employe).setManager((Manager) employeeSetToManager);
+                employe.setManager((Manager) employeeSetToManager);
                 ((Manager) employeeSetToManager).setSubordinates(((Manager) employeeSetToManager).getSubordinates() + 1);
                 System.out.println("Chỉ định thành công!");
             }
         }
     }
+
     /**
      * Hàm thêm hoặc xóa nhân viên
      */
@@ -262,34 +318,57 @@ public class Company {
             String employeeId;
             System.out.println("Nhập mã Nhân viên muốn xóa: ");
             employeeId = scanner.nextLine();
-            for (Employee employee : company.getListOfStaff()) {
-                if (employeeId.toLowerCase().equals(employee.getId().toLowerCase())) {
+            for (Employee employee : listOfStaff) {
+                if (employeeId.equalsIgnoreCase(employee.getId())) {
                     if (employee instanceof Manager) {
-                        for (Employee staff : company.getListOfStaff()) {
+                        for (Employee staff : listOfStaff) {
                             if (staff instanceof Employee)
-                                ((Employee) staff).setManager(null);
+                                staff.setManager(null);
                         }
                     }
-                    company.getListOfStaff().remove(employee);
+                    listOfStaff.remove(employee);
                 }
 
             }
         }
     }
+
     /**
      * Hàm hiển thị nhân viên
      */
     public void printEmployee() {
-        checkInfoCompany();
-        printHeaderCompany();
-        System.out.println(company.toString());
-        printFooterCompany();
+        if (company == null) {
+            System.out.println("Chưa có thông tin công ty. ");
+        } else {
+            printHeaderCompany();
+            System.out.println(company.toString());
+            printFooterCompany();
+        }
         printHeader();
         for (Employee employee : listOfStaff) {
             System.out.println(employee.toString());
         }
         printFooter();
     }
+
+    /**
+     * Hàm hiển thị quản lý
+     */
+    public void printManager() {
+        if (company == null) {
+            System.out.println("Chưa có thông tin công ty. ");
+        } else {
+            printHeaderCompany();
+            System.out.println(company.toString());
+            printFooterCompany();
+        }
+        printHeader();
+        for (Manager manager : listOfManager) {
+            System.out.println(manager.toString());
+        }
+        printFooter();
+    }
+
     /**
      * Hàm tính tổng thu nhập cả công ty
      */
@@ -341,7 +420,7 @@ public class Company {
                     employeeTemp = employee;
                 }
         }
-        System.out.println((Manager) employeeTemp);
+        System.out.println(employeeTemp);
     }
 
     /**
@@ -352,12 +431,11 @@ public class Company {
         Collections.sort(listOfStaff, new Comparator<Employee>() {
             @Override
             public int compare(Employee employeeName, Employee employeeName2) {
-                return employeeName.getName().compareToIgnoreCase(employeeName2.getName());
+                return employeeName.getName().compareTo(employeeName2.getName());
             }
         });
         System.out.println("Success!");
     }
-
     /**
      * Hàm hiển sắp xếp lương giảm dần
      */
@@ -379,6 +457,7 @@ public class Company {
 
         System.out.println("Success!");
     }
+
     /**
      * Hàm hiển thị Giám Đốc có cổ phần cao nhất
      */
@@ -415,24 +494,28 @@ public class Company {
      * Hàm xử lý ngoại lệ
      * Nếu chưa có thông tin công ty thì không cho nhập
      */
-    public void checkInfoCompany(){
+    public void checkInfoCompany() {
         if (company == null) {
             System.out.println("Chưa có thông tin công ty. ");
         }
     }
+
     public void printHeader() {
-        System.out.println("+-------------+-------------------+--------------------+----------------------+------------------+-------------------+");
-        System.out.println("|     ID      |       Họ Tên      |    Số Điện Thoại   |   Số Ngày Làm Việc   |    Lương Ngày    |   Lương Tháng     |");
-        System.out.println("+-------------+-------------------+--------------------+----------------------+------------------+-------------------+");
+        System.out.println("+-------------+-------------------+--------------------+----------------------+------------------+-------------------+-------------------+---------------+---------------");
+        System.out.println("|     ID      |       Họ Tên      |    Số Điện Thoại   |   Số Ngày Làm Việc   |    Lương Ngày    |   Lương Tháng     |      Chức Vụ      |    Cổ Phần    |    Thu Nhập   ");
+        System.out.println("+-------------+-------------------+--------------------+----------------------+------------------+-------------------+-------------------+---------------+---------------");
     }
+
     public void printFooter() {
-        System.out.println("+-------------+-------------------+--------------------+----------------------+------------------+-------------------+");
+        System.out.println("+-------------+-------------------+--------------------+----------------------+------------------+-------------------+-------------------+---------------+---------------");
     }
+
     public void printHeaderCompany() {
         System.out.println("+----------------------+----------------+----------------+---------------+");
         System.out.println("|     Tên Công Ty      |       MST      |    Doanh Thu   |   Lợi Nhuận   |");
         System.out.println("+----------------------+----------------+----------------+---------------+");
     }
+
     public void printFooterCompany() {
         System.out.println("+----------------------+----------------+----------------+---------------+");
     }
@@ -440,7 +523,7 @@ public class Company {
 
     @Override
     public String toString() {
-        return String.format("%-25s%-15s%.2f",companyName,taxCode,monthlyRevenue);
+        return String.format("%-25s%-15s%.2f", companyName, taxCode, monthlyRevenue);
 
     }
 }

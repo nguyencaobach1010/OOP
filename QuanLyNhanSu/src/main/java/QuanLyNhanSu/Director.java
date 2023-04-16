@@ -37,6 +37,6 @@ public class Director extends Employee{
     @Override
     public String toString() {
         return String.format("%-15s%-25s%-25s%-20s%.2f%20s-20s%.2f%20s",
-                getId(), getName(), getPhoneNumber(), getDayOfWorks(), getDailySalary(), monthlySalary(),share,income);
+                getId(), getName(), getPhoneNumber(), getDayOfWorks(), getDailySalary(), monthlySalary(), share, income);
     }
 }

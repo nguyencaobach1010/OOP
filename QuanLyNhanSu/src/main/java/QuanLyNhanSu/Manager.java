@@ -20,9 +20,8 @@ public class Manager extends Employee{
         Subordinates = subordinates;
     }
 
-    @Override
     public double monthlySalary() {
-        return monthlySalary() * 200 + 100 * Subordinates;
+        return super.monthlySalary() * 200 + 100 * Subordinates;
     }
 
     @Override
