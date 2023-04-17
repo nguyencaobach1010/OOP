@@ -1,4 +1,5 @@
 BÀI CUỐI KHÓA : QUẢN LÝ NHÂN SỰ
+
 Xây dựng ứng dụng Quản lý nhân sự của 1 công ty bằng với các yêu cầu sau:
 Công ty có tên công ty, mã số thuế, doanh thu tháng. Công ty có 3 loại nhân viên: giám đốc, trưởng phòng, nhân viên thường. Mỗi người trong công ty phải
 có các thông tin: mã số, họ tên, số điện thoại, số ngày làm việc, lương 1 ngày và cách tính lương. Ngoài các thông tin chung, mỗi chức vụ trong công ty
